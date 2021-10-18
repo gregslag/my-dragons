@@ -32,7 +32,8 @@ router.post('/register', (req, res) => {
     // Create token for new user
     const accessToken = createToken({ email, password })
     console.log("Access Token:" + accessToken);
-    return res.status(200).json({ accessToken })
+    delete newUser.password
+    return res.status(200).json({ accessToken, ...newUser })
   } catch (error) {
     console.log("error on create user >> ", error);
 
@@ -49,9 +50,10 @@ router.post('/login', (req, res) => {
     return res.status(401).json({ message: 'Incorrect email or password' })
   }
   // Create token for logged user
-  const access_token = createToken({ email, password })
-  console.log("Access Token:" + access_token);
-  return res.status(200).json({ access_token })
+  const accessToken = createToken({ email, password })
+  console.log("Access Token:" + accessToken);
+  delete user.password
+  return res.status(200).json({ accessToken, ...user })
 })
 
 module.exports = router;
