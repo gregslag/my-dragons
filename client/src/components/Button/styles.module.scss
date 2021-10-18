@@ -1,0 +1,53 @@
+@import '../../styles/layout/fonts';
+@import '../../styles/layout/colors';
+
+.button {
+  font-family: $primaryFont;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  border-radius: 5px;
+  box-sizing: border-box;
+  min-width: 280px;
+  height: 50px;
+  color: $white;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &--link {
+    line-height: 1.5;
+    border: none;
+    color: $dorado;
+    background: none;
+    min-width: none;
+    height: auto;
+
+    &:hover {
+      text-decoration: underline;
+      color: $primary;
+    }
+  }
+
+  &--primary {
+    background: $primary;
+    border: 1px solid $primary;
+
+    &:hover,
+    &:focus {
+      background: $primaryLight;
+    }
+  }
+
+  &--secondary {
+    background: $secondary;
+    border: 1px solid $secondary;
+
+    &:hover,
+    &:focus {
+      background: $secondaryLight;
+    }
+  }
+}

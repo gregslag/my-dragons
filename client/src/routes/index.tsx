@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Switch, Redirect } from 'react-router-dom'
+import { Switch, Redirect } from 'react-router-dom'
 import Route from './Route'
 
 import Home from '../views/Home'
@@ -16,7 +16,6 @@ export const routes = {
 
 const Routes: React.FC = () => {
   return (
-    <BrowserRouter>
       <Switch>
         <Route path={routes.home} exact component={Home} />
         <Route path={routes.signIn} exact component={SignIn} />
@@ -24,7 +23,6 @@ const Routes: React.FC = () => {
         <Route path={routes.dragons} isPrivate exact component={Dragons} />
         <Redirect from="*" to="/" />
       </Switch>
-    </BrowserRouter>
   )
 }
 

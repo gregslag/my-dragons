@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken')
 const express = require("express");
 const UserDAO = require("../db/user.dao");
-const UserModel = require("../models/user.model");
 
 const router = express.Router();
 
@@ -24,14 +23,11 @@ router.post('/register', (req, res) => {
       return res.status(401).json({ message: 'Email and Password already exist' });
     }
 
-    const userModel = new UserModel(req.body);
-
-    const newUser = userDAO.insert(userModel);
-    console.log('newUser :>> ', newUser);
+    const newUser = userDAO.insert(req.body);
 
     // Create token for new user
     const accessToken = createToken({ email, password })
-    console.log("Access Token:" + accessToken);
+
     delete newUser.password
     return res.status(200).json({ accessToken, ...newUser })
   } catch (error) {
@@ -51,7 +47,7 @@ router.post('/login', (req, res) => {
   }
   // Create token for logged user
   const accessToken = createToken({ email, password })
-  console.log("Access Token:" + accessToken);
+
   delete user.password
   return res.status(200).json({ accessToken, ...user })
 })

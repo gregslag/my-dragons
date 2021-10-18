@@ -8,7 +8,6 @@ class UserDAO {
 
   insert(user) {
     const users = this.getAll();
-
     const newUsersList = [...users, user];
 
     fs.outputJsonSync(this.pathUsers, newUsersList);

@@ -1,0 +1,26 @@
+@import '../../styles/layout/colors';
+
+.text {
+  font-size: 1rem;
+
+  &--h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  &--primary {
+    color: $primary;
+  }
+
+  &--secondary {
+    color: $secondary;
+  }
+
+  &--bold {
+    font-weight: bold;
+  }
+ 
+  &--semibold {
+    font-weight: 500;
+  }
+}

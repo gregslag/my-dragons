@@ -1,0 +1,33 @@
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+
+@mixin fromSM {
+  @media only screen and (min-width: $sm) {
+      @content;
+  }
+}
+
+@mixin fromMD {
+  @media only screen and (min-width: $md) {
+      @content;
+  }
+}
+
+@mixin fromLG {
+  @media only screen and (min-width: $lg) {
+      @content;
+  }
+}
+
+@mixin fromXL {
+  @media only screen and (min-width: $xl) {
+      @content;
+  }
+}
+
+@mixin flexCol {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+
+@function strip-unit($int) {
+  @return $int / ($int * 0 + 1);
+}
+
+@function rem($int) {
+  $size: strip-unit($int);
+  @return $size / 16 * 1rem;
+}
+
+$primaryFont: 'Roboto', sans-serif;
+
+$_fonts: (
+    title1: (rem(96), 300, rem(142)),
+    title2: (rem(64), 300, rem(96)),
+    title3: (rem(48), 400, rem(72)),
+    title4: (rem(32), 500, rem(48)),
+    title5: (rem(28), 500, rem(36)),
+    title6: (rem(24), 500, rem(32)),
+    title7: (rem(20), 500, rem(32)),
+    title8: (rem(40), 900, rem(45)),
+    title9: (rem(32), 900, rem(36)),
+    title10: (rem(64), 500, rem(36)),
+    title11: (rem(40), 500, rem(36)),
+    title12: (rem(26), 900, rem(36)),
+    title13: (rem(16), 900, rem(20)),
+    title14: (rem(38), 500, rem(58)),
+    title15: (rem(36), 500, rem(56)),
+    title16: (rem(30), 400, rem(30)),
+
+    subtitle1: (rem(20), 400, rem(24)),
+    subtitle2: (rem(16), 500, rem(20)),
+    subtitle3: (rem(14), 500, rem(20)),
+    subtitle4: (rem(18), 400, rem(26)),
+    subtitle5: (rem(18), 500, rem(26)),
+    subtitle6: (rem(16), 500, rem(24)),
+
+    body1: (rem(16), 400, rem(24)),
+    body2: (rem(14), 400, rem(20)),
+    body3: (rem(14), 400, rem(16)),
+    body4: (rem(20), 400, rem(24)),
+    body5: (rem(18), 400, rem(24)),
+
+    buttonText: (rem(16), 500, rem(20)),
+    buttonTextSmall: (rem(12), 500, rem(16)),
+    caption: (rem(12), 400, rem(16)),
+    overline: (rem(10), 400, rem(16))
+);
+
+@mixin font($type) {
+  $content: map-get($_fonts, $type);
+
+  font-size: nth($content, 1);
+  font-weight: nth($content, 2);
+  line-height: nth($content, 3);
+}
+
+%bold {
+  font-weight: 500;
+}

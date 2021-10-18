@@ -1,0 +1,23 @@
+@import './layout/mixins';
+
+.container {
+  @include flexCol;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.form {
+  @include flexCol;
+  flex: 1;
+  width: 100%;
+}
+
+.mbMedium {
+  margin-bottom: 1.5rem;
+}
+
+.inputWrapper {
+  @include flexCol;
+  margin-bottom: 1rem;
+}
