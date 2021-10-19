@@ -25,7 +25,7 @@
 
 .box {
   @include flexCol;
-  border-radius: 30px;
+  border-radius: 15px;
   padding: 1rem;
   flex-direction: column;
   width: 100%;
@@ -47,6 +47,7 @@
     min-width: 500px;
     width: auto;
     padding: 2rem;
+    border-radius: 20px;
 
     &--fullHeight {
       height: 100%;

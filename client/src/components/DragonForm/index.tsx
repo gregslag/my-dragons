@@ -63,8 +63,8 @@ export const DragonForm: React.FC<DragonFormProps> = ({ loading, type, dragon, o
   }, [dragon]);
 
   return (
-    <ViewBox>
-      <div className={shared.container}>
+    <ViewBox fullMobile>
+      <div className={cn(shared.container, s.container)}>
         <Text
           className={s.back}
           theme="primary"
