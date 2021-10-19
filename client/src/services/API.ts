@@ -19,7 +19,7 @@ API.interceptors.response.use(
   },
   function (error) {
     const code = error.response.status
-    if (code === 401) {
+    if (code === 401 || code === 403) { 
       localStorage.removeItem('@MyDragons:token')
       localStorage.removeItem('@MyDragons:user')
     }
