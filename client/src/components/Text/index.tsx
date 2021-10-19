@@ -12,6 +12,7 @@ export type TextProps = {
   theme?: TextTheme
   weight?: 'bold' | 'semibold'
   centered?: boolean
+  onClick?: () => void
 }
 
 export const Text: React.FC<TextProps> = ({

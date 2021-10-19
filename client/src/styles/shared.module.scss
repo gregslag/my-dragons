@@ -25,3 +25,21 @@
 
   margin-bottom: 2rem;
 }
+
+$avartMobile: 100px;
+$avartDesktop: 150px;
+
+.avatar {
+  width: $avartMobile;
+  height: $avartMobile;
+  min-width: $avartMobile;
+  min-height: $avartMobile;
+  border-radius: 20px;
+
+  @include fromMD {
+    width: $avartDesktop;
+    height: $avartDesktop;
+    min-width: $avartDesktop;
+    min-height: $avartDesktop;
+  }
+}

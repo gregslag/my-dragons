@@ -5,11 +5,12 @@ import s from './styles.module.scss'
 
 interface ViewBoxProps {
   fullMobile?: boolean;
+  fullHeight?: boolean;
 }
 
 const cn = classnames.bind(s)
 
-export const ViewBox: React.FC<ViewBoxProps> = ({ fullMobile, children }) => {
+export const ViewBox: React.FC<ViewBoxProps> = ({ fullMobile, fullHeight, children }) => {
   const { signed } = useAuth()
   return (
     <div
@@ -20,7 +21,8 @@ export const ViewBox: React.FC<ViewBoxProps> = ({ fullMobile, children }) => {
     >
       <div
         className={cn('box', {
-          'box--fullMobile': fullMobile
+          'box--fullMobile': fullMobile,
+          'box--fullHeight': fullHeight
         })}
       >
         {children}

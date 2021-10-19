@@ -1,8 +1,11 @@
 import React from 'react';
+import { useHistory } from 'react-router';
+import cn from 'classnames'
 import axios from 'axios';
 import { useForm, SubmitHandler } from "react-hook-form";
 import s from './styles.module.scss'
 import shared from '../../styles/shared.module.scss'
+import { routes } from '../../routes'
 import { Interfaces } from '../../services';
 import { FormType } from '../../context'
 import { ViewBox, Text, Input, Button, SVG } from '../'
@@ -26,6 +29,7 @@ interface DragonFormProps {
 export const DragonForm: React.FC<DragonFormProps> = ({ loading, type, dragon, onSubmit: onSubmitCB }) => {
   const [isValidAvatar, setIsValidAvatar] = React.useState(false);
   const { register, handleSubmit, setValue, watch, formState: { errors } } = useForm<InputsProps>();
+  const history = useHistory()
 
   const onSubmit: SubmitHandler<InputsProps> = (data) => {
     onSubmitCB(data)
@@ -61,19 +65,27 @@ export const DragonForm: React.FC<DragonFormProps> = ({ loading, type, dragon, o
   return (
     <ViewBox>
       <div className={shared.container}>
+        <Text
+          className={s.back}
+          theme="primary"
+          weight="bold"
+          onClick={() => history.push(routes.dragons)}
+        >
+          Voltar
+        </Text>
         {!!avatar && isValidAvatar ? (
-          <img src={avatar} alt="Avatar do dragão" className={s.avatar} />
+          <img src={avatar} alt="Avatar do dragão (url)" className={shared.avatar} />
         ) : (
-          <SVG.Logo />
+          <SVG.Logo className={shared.avatar} />
         )}
         <form onSubmit={handleSubmit(onSubmit)} className={shared.form}>
-          <Text className={shared.mbMedium} tag="h2" theme="primary">
-            {type === 'CREATE' ? 'Cadastrar um novo dragão' : `Editar`}
+          <Text className={cn(shared.mbMedium, s.title)} tag="h2" theme="primary">
+            {type === 'CREATE' ? 'Cadastrar um dragão' : `Editar ${dragon?.name}`}
           </Text>
 
           <div className={shared.inputWrapper}>
             <Input
-              label="Avatar"
+              label="Avatar do dragão (url)"
               name="avatar"
               type="text"
               register={register}

@@ -30,7 +30,7 @@ export const AuthForm: React.FC<AuthFormProps> = ({ loading, type, onSubmit: onS
   return (
     <ViewBox>
       <div className={shared.container}>
-        <SVG.Logo />
+        <SVG.Logo className={shared.avatar} />
         <form onSubmit={handleSubmit(onSubmit)} className={shared.form}>
           <Text className={shared.mbMedium} tag="h2" theme="primary">
             {type === 'LOGIN' ? 'Entrar' : 'Cadastrar'}

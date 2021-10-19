@@ -44,7 +44,7 @@ const Dragons: React.FC = () => {
   }, [])
 
   return (
-    <ViewBox fullMobile>
+    <ViewBox fullMobile fullHeight>
       <Modal open={modalVisible} onClose={() => setModalVisible(false)}>
         <Text centered>Tem certeza que quer deletar o dragão {dragonToDelete?.name}?</Text>
         <div className={s.modalButtons}>

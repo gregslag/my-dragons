@@ -1,5 +1,14 @@
-.avatar {
-  width: 150px;
-  height: 150px;
-  border-radius: 20px;
+@import '../../styles/layout/mixins';
+
+.back {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  cursor:pointer;
+}
+
+.title {
+  @include untilMD {
+    font-size: 1.2rem;
+  }
 }
