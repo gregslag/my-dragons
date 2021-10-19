@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(require("./routes"));
 
-const port = 3333;
+const port = process.env.PORT || 3333;
 app.listen(port, function () {
   console.log("Server listening on port " + port);
 });
