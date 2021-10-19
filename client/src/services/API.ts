@@ -1,7 +1,8 @@
 import axios, { AxiosError } from 'axios'
 
 const API = axios.create({
-  baseURL: 'http://localhost:3333/api/v1'
+  // baseURL: 'http://localhost:3333/api/v1'
+  baseURL: 'https://my-dragons-api.herokuapp.com/api/v1'
 })
 
 API.interceptors.request.use(function (config) {
