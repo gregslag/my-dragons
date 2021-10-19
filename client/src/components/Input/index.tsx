@@ -9,6 +9,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   register?: UseFormRegister<any>;
   required?: boolean;
   validation?: RegisterOptions
+  IconLeft?: React.ReactNode
 }
 
 const cn = classnames.bind(s)
@@ -20,6 +21,7 @@ export const Input: React.FC<InputProps> = ({
   name,
   error,
   type,
+  IconLeft,
   validation: v = {},
   ...props
 }) => {
@@ -36,9 +38,15 @@ export const Input: React.FC<InputProps> = ({
   return (
     <div className={s.container}>
       {!!label && <label className={s.label}>{label}</label>}
+      {!!IconLeft && (
+        <div className={cn('container--iconLeft')}>
+          {IconLeft}
+        </div>
+      )}
       <input
         className={cn('input', {
-          'input--error': !!error?.type
+          'input--error': !!error?.type,
+          'input--withIconLeft': !!IconLeft,
         })}
         type={type}
         {...props}

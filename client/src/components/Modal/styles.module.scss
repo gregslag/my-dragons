@@ -30,5 +30,10 @@
   background: $white;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
-  padding: 3rem;
+  padding: 3rem 2rem;
+  max-width: 95%;
+  
+  @include fromMD {
+    padding: 3rem;
+  }
 }

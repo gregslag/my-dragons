@@ -4,6 +4,14 @@
 
 .container {
   @include flexCol;
+  position: relative;
+
+  &--iconLeft {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translate(0%, -50%);
+  }
 }
 
 .label {
@@ -17,6 +25,10 @@
   height: 40px;
   padding-left: 0.9rem;
   font-size: 1rem;
+
+  &--withIconLeft {
+    padding-left: 3rem;
+  }
 
   &--error {
     border-color: $danger;

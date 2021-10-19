@@ -9,6 +9,10 @@
   align-items: center;
   padding: 1rem;
 
+  &--logged {
+    height: calc(100% - 50px);
+  }
+
   &--fullMobile {
     @include untilMD { 
       padding: 0;

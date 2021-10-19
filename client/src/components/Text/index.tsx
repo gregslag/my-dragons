@@ -11,6 +11,7 @@ export type TextProps = {
   className?: string
   theme?: TextTheme
   weight?: 'bold' | 'semibold'
+  centered?: boolean
 }
 
 export const Text: React.FC<TextProps> = ({
@@ -19,11 +20,13 @@ export const Text: React.FC<TextProps> = ({
   className,
   theme,
   weight,
+  centered,
   ...props
 }) => {
   const Tag = tag || 'p'
   const rootClassName = cn('text', `text--${theme}`, `text--${weight}`, {
-    'text--h2': tag === 'h2'
+    'text--h2': tag === 'h2',
+    'text--centered': centered
   }, className)
 
   return (

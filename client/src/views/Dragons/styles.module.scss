@@ -19,7 +19,7 @@
   }
 
   & > :nth-child(2) {
-    width: 45%;
+    width: 50%;
     @include fromMD {
       margin-left: 1rem;
       flex: 1.5;
@@ -69,7 +69,7 @@
 .dragonItem {
   @include flexRow;
   background: $white;
-  padding: .5rem;
+  padding: 1rem .5rem;
   border-radius: .5em;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
   width: 100%;

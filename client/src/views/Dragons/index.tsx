@@ -46,7 +46,7 @@ const Dragons: React.FC = () => {
   return (
     <ViewBox fullMobile>
       <Modal open={modalVisible} onClose={() => setModalVisible(false)}>
-        <Text>Tem certeza que deseja deletar o dragão {dragonToDelete?.name}?</Text>
+        <Text centered>Tem certeza que quer deletar o dragão {dragonToDelete?.name}?</Text>
         <div className={s.modalButtons}>
           <Button
             size="small"
@@ -71,11 +71,13 @@ const Dragons: React.FC = () => {
       </Modal>
       <div className={s.actions}>
         <Input
+          IconLeft={<SVG.MagnifyingGlass />}
           placeholder="Pesquisar Dragão"
           value={searchTerm}
           onChange={handleChange}
         />
         <Select
+          IconLeft={<SVG.Filter />}
           placeholder="Ordenar"
           options={sortOptions}
           onChange={({ value }) => handleSort(value)}

@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactSelect, { StylesConfig } from 'react-select';
+import ReactSelect, { components, ControlProps, StylesConfig } from 'react-select';
 import classnames from 'classnames/bind'
 import { UseFormRegister, FieldError, RegisterOptions } from "react-hook-form";
 import s from './styles.module.scss'
@@ -13,10 +13,37 @@ interface SelectProps {
   validation?: RegisterOptions
   options: any[];
   name?: string;
+  IconLeft?: React.ReactNode
   onChange: (_: any) => void;
 }
 
 const cn = classnames.bind(s)
+
+const Control: React.FC<any> = ({ children, ...props }) => {
+  const { IconLeft } = props.selectProps;
+  return (
+    <components.Control {...props}>
+      {!!IconLeft && (
+        <div className={s.iconLeft}>
+          {IconLeft}
+        </div>
+      )}
+      {children}
+    </components.Control>
+  );
+};
+
+const customStyles = {
+  control: (provided: any, state: any) => ({
+    ...provided,
+    height: 40,
+    border: state.isFocused ? '1px solid #d98324' : '1px solid #E9E4DA',
+    boxShadow: 0,
+    '&:hover': {
+       border: '1px solid #d98324'
+    }
+  }),
+}
 
 export const Select: React.FC<SelectProps> = ({
   label,
@@ -26,6 +53,7 @@ export const Select: React.FC<SelectProps> = ({
   error,
   validation,
   options,
+  IconLeft,
   onChange,
   ...props
 }) => {
@@ -33,6 +61,10 @@ export const Select: React.FC<SelectProps> = ({
     <div className={s.container}>
       {!!label && <label className={s.label}>{label}</label>}
       <ReactSelect
+        // @ts-ignore
+        IconLeft={IconLeft}
+        styles={customStyles}
+        components={{ Control }}
         options={options}
         onChange={onChange}
         className={cn('select', {
