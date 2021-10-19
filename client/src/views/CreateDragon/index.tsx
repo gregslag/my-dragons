@@ -12,7 +12,11 @@ const CreateDragon: React.FC = () => {
   };
 
   return (
-    <DragonForm loading={mutationLoading} type={formType} onSubmit={handleSubmit} />
+    <DragonForm
+      mutationLoading={mutationLoading}
+      type={formType}
+      onSubmit={handleSubmit}
+    />
   );
 }
 

@@ -8,6 +8,7 @@ import SignUp from '../views/SignUp'
 import Dragons from '../views/Dragons'
 import CreateDragon from '../views/CreateDragon'
 import UpdateDragon from '../views/UpdateDragon'
+import DragonDetail from '../views/DragonDetail'
 
 export const routes = {
   signIn: '/entrar',
@@ -16,6 +17,7 @@ export const routes = {
   dragons: '/dragoes',
   createDragon: '/cadastrar-dragao',
   updateDragon: '/editar-dragao/:id',
+  dragonDetail: '/dragao/:id',
 }
 
 const Routes: React.FC = () => {
@@ -27,6 +29,7 @@ const Routes: React.FC = () => {
         <Route path={routes.dragons} isPrivate exact component={Dragons} />
         <Route path={routes.createDragon} isPrivate exact component={CreateDragon} />
         <Route path={routes.updateDragon} isPrivate exact component={UpdateDragon} />
+        <Route path={routes.dragonDetail} isPrivate exact component={DragonDetail} />
         <Redirect from="*" to="/" />
       </Switch>
   )

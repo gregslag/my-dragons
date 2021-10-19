@@ -5,11 +5,9 @@ import { useDragon } from '../../hooks'
 
 const formType = 'UPDATE'
 
-
-
 const UpdateDragon: React.FC = () => {
   const { id } = useParams<{ id: string }>()
-  const { getDragonDetails, dragonDetails, mutationLoading, mutateDragon } = useDragon();
+  const { getDragonDetails, dragonDetails, mutationLoading, mutateDragon, queryLoading } = useDragon();
 
   const handleSubmit = (dragon: DragonFormPayload) => {
     mutateDragon(dragon, formType)
@@ -21,7 +19,8 @@ const UpdateDragon: React.FC = () => {
 
   return (
     <DragonForm
-      loading={mutationLoading}
+      mutationLoading={mutationLoading}
+      queryLoading={queryLoading}
       type={formType}
       dragon={dragonDetails}
       onSubmit={handleSubmit}

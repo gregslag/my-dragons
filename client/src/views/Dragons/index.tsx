@@ -1,11 +1,10 @@
 import React from 'react';
-import PuffLoader from 'react-spinners/PuffLoader'
 import { useHistory } from 'react-router';
 import classnames from 'classnames/bind'
 import format from 'date-fns/format'
 import { Interfaces } from '../../services'
 import { useDragon } from '../../hooks'
-import { ViewBox, Input, Select, Button, Text, SVG, Modal } from '../../components'
+import { ViewBox, Input, Select, Button, Text, SVG, Modal, Loading } from '../../components'
 import { routes } from '../../routes'
 import s from './styles.module.scss'
 
@@ -91,9 +90,7 @@ const Dragons: React.FC = () => {
       </div>
       <div className={s.listContainer}>
         {queryLoading ? (
-          <div className={s.loadingWrapper}>
-            <PuffLoader color="#a40606" size={100} />
-          </div>
+          <Loading />
         ) : (
           <div className={s.dragonsList}>
             {searchResults.map((dragon) => (
@@ -114,6 +111,14 @@ const Dragons: React.FC = () => {
                     weight="bold"
                   >
                     {dragon.type}
+                  </Text>
+                  <Text
+                    theme="primary"
+                    weight="bold"
+                    className={cn('dragonItem--description--moreDetails')}
+                    onClick={() => history.push(routes.dragonDetail.replace(':id', dragon.id!))}
+                  >
+                    + Detalhes
                   </Text>
                 </div>
                 <div className={cn('dragonItem--right')}>

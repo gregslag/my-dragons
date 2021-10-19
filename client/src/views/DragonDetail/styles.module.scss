@@ -1,0 +1,14 @@
+@import '../../styles/layout/colors';
+@import '../../styles/layout/mixins';
+
+.container {
+  padding-top: 2rem;
+}
+
+.fieldGroup {
+  @include flexRow;
+
+  & > :nth-child(1) {
+    margin-right: .5rem;
+  }
+}
