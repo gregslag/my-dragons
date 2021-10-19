@@ -1,0 +1,166 @@
+@import '../../styles/layout/colors';
+@import '../../styles/layout/mixins';
+
+.actions {
+  @include flexRow;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+
+  & > :nth-child(1) {
+    width: 100%;
+    margin-bottom: 1rem;
+
+    @include fromMD {
+      flex: 2;
+      width: auto;
+      margin-bottom: 0;
+    }
+  }
+
+  & > :nth-child(2) {
+    width: 45%;
+    @include fromMD {
+      margin-left: 1rem;
+      flex: 1.5;
+      width: auto;
+    }
+  }
+
+  & > :nth-child(3) {
+    width: 45%;
+    @include fromMD {
+      margin-left: 1rem;
+      flex: 1;
+      width: auto;
+    }
+  }
+
+  @include fromMD {
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+}
+
+.listContainer {
+  display: flex;
+  flex: 1;
+  overflow-y: auto;
+
+  @include fromLG {
+    min-width: 900px;
+  }
+}
+
+.loadingWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.dragonsList {
+  @include flexCol;
+  flex: 1;
+
+  @include spaceChildrenMD;
+}
+
+.dragonItem {
+  @include flexRow;
+  background: $white;
+  padding: .5rem;
+  border-radius: .5em;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  position: relative;
+
+  @include fromMD {
+    padding: 1rem;
+  }
+
+  &--actions {
+    @include flexRow;
+
+    & svg {
+      cursor: pointer;
+    }
+
+    & > :nth-child(2) {
+      margin-left: 1rem;
+    }
+  }
+
+  &--description {
+    @include flexCol;
+    margin-left: .5rem;
+    
+    @include fromMD {
+      margin-left: 1rem;
+    }
+
+    &--name {
+      font-size: 1.1rem;
+
+      @include fromMD {
+        font-size: 1.5rem;
+      }
+    }
+
+    &--type {
+      font-size: 0.9rem;
+
+      @include fromMD {
+        font-size: 1rem;
+      }
+    }
+
+    &--createdAt {
+      font-size: 0.7rem;
+      position: absolute;
+      bottom: .5rem;
+
+      @include fromMD {
+        position: relative;
+        font-size: 1rem;
+      }
+    }
+
+    & > :nth-child(1) {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &--right {
+    @include flexCol;
+    align-items: flex-end;
+    flex: 1;
+    justify-content: space-between;
+  }
+
+  &--avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+
+    @include fromMD {
+      width: 150px;
+      height: 150px;
+      border-radius: 20px;
+    }
+  }
+}
+
+.modalButtons {
+  @include flexRow;
+  margin-top: 2rem;
+  justify-content: center;
+
+  & > :nth-child(1) {
+    margin-right: .5rem;
+  }
+
+  & > :nth-child(2) {
+    margin-left: .5rem;
+  }
+}

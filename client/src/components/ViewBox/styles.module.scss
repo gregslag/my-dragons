@@ -9,18 +9,38 @@
   align-items: center;
   padding: 1rem;
 
+  &--fullMobile {
+    @include untilMD { 
+      padding: 0;
+    }
+  }
+
   background-color: $primary;
   background-image: linear-gradient(315deg, $primary 0%, $secondary 74%);
 }
 
 .box {
+  @include flexCol;
   border-radius: 30px;
-  padding: 2rem;
+  padding: 1rem;
   flex-direction: column;
-  height: 80%;
+  height: 100%;
+  width: 100%;
   background: $ecruWhite;
+  min-height: 0;
+
+  &--fullMobile {
+    @include untilMD { 
+      width: 100%;
+      height: 100%;
+      border-radius: 0px;
+    }
+  }
   
   @include fromMD {
     min-width: 500px;
+    width: auto;
+    height: 80%;
+    padding: 2rem;
   }
 }

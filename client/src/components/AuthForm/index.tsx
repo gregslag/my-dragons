@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { routes } from '../../routes'
 import shared from '../../styles/shared.module.scss'
-import { ViewBox, Text, Input, Button, SVG } from '../../components'
+import { ViewBox, Text, Input, Button, SVG } from '../'
 
 type InputsProps = {
   name?: string;

@@ -16,10 +16,12 @@ export const AuthContext = React.createContext<AuthContextProps>({} as AuthConte
 
 export const AuthProvider: React.FC<any> = ({ history, children }) => {
   const [loading, setLoading] = React.useState(false)
+  const [token, setToken] = React.useState<string | null>(localStorage.getItem('@MyDragons:token'))
   const [user, setUser] = React.useState<Interfaces.IUser | null>(null)
 
   const signOut = () => {
     setUser(null)
+    setToken(null)
     localStorage.removeItem('@MyDragons:token')
     localStorage.removeItem('@MyDragons:user')
   }
@@ -29,6 +31,7 @@ export const AuthProvider: React.FC<any> = ({ history, children }) => {
     try {
       const data = await APIAuth.register(usr)
       setUser(data)
+      setToken(data.accessToken!)
 
       localStorage.setItem('@MyDragons:token', data.accessToken!)
       localStorage.setItem('@MyDragons:user', JSON.stringify(data))
@@ -47,6 +50,7 @@ export const AuthProvider: React.FC<any> = ({ history, children }) => {
     try {
       const data = await APIAuth.login({ email, password })
       setUser(data)
+      setToken(data.accessToken!)
 
       localStorage.setItem('@MyDragons:token', data.accessToken!)
       localStorage.setItem('@MyDragons:user', JSON.stringify(data))
@@ -60,11 +64,26 @@ export const AuthProvider: React.FC<any> = ({ history, children }) => {
     }
   }
 
+  const checkToken = () => {
+    const token = localStorage.getItem('@MyDragons:token')
+    if (!token) {
+      signOut()
+    }
+  }
+
+  React.useEffect(() => {
+    window.addEventListener('storage', checkToken)
+    
+    return () => {
+      window.removeEventListener('storage', checkToken)
+    }
+  }, []);
+
   return (
     <AuthContext.Provider
       value={{
         loading,
-        signed: !!localStorage.getItem('@MyDragons:token'),
+        signed: !!token,
         user,
         signUp,
         signIn,

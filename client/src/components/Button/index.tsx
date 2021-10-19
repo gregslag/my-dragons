@@ -1,14 +1,16 @@
 import React, { ButtonHTMLAttributes } from 'react'
 import classnames from 'classnames/bind'
-import BeatLoader from 'react-spinners/BeatLoader'
+import PuffLoader from 'react-spinners/PuffLoader'
 import s from './styles.module.scss'
 
 const cn = classnames.bind(s)
 
-type ButtonTheme = 'primary' | 'secondary' | 'link'
+type ButtonTheme = 'primary' | 'secondary' | 'link' | 'outlined'
+type ButtonSize = 'normal' | 'small'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   theme?: ButtonTheme
+  size?: ButtonSize
   loading?: boolean
 }
 
@@ -18,15 +20,16 @@ export const Button: React.FC<ButtonProps> = ({
   theme = 'primary',
   className,
   type = 'button',
+  size = 'normal',
   loading,
   ...props
 }) => {
-  const rootClassName = cn('button', `button--${theme}`, className)
+  const rootClassName = cn('button', `button--${theme}`, `button--${size}`, className)
 
   return (
     <button className={rootClassName} type={type} {...props}>
       {loading ? (
-        <BeatLoader color="#FFF" size={12} />
+        <PuffLoader color={theme === 'outlined' ? "#a40606" : "#FFF"} size={30} />
       ) : children}
     </button>
   )

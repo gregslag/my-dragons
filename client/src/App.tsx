@@ -2,16 +2,20 @@ import React from 'react';
 import { withRouter, useHistory } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { AuthProvider } from './context'
+import { AuthProvider, DragonProvider } from './context'
+import { Header } from './components'
 import Routes from './routes'
 
 function App() {
-  const history = useHistory() 
+  const history = useHistory()
 
   return (
     <AuthProvider history={history}>
-      <ToastContainer autoClose={3000} />
-      <Routes />
+      <DragonProvider history={history}>
+        <ToastContainer autoClose={3000} />
+        <Header />
+        <Routes />
+      </DragonProvider>
     </AuthProvider>
   );
 }

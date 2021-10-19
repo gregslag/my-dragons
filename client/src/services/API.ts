@@ -12,6 +12,20 @@ API.interceptors.request.use(function (config) {
   return config
 })
 
+API.interceptors.response.use(
+  function (response) {
+    return response
+  },
+  function (error) {
+    const code = error.response.status
+    if (code === 401) {
+      localStorage.removeItem('@MyDragons:token')
+      localStorage.removeItem('@MyDragons:user')
+    }
+    return Promise.reject(error)
+  }
+)
+
 export const parseResponseError = (error: AxiosError<any>) => {
   return (
     error?.response?.data?.error || error?.message || 'Ops! Ocorreu um erro'

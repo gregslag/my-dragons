@@ -15,6 +15,12 @@ $xl: 1200px;
   }
 }
 
+@mixin untilMD {
+  @media only screen and (max-width: $md) {
+      @content;
+  }
+}
+
 @mixin fromLG {
   @media only screen and (min-width: $lg) {
       @content;
@@ -27,7 +33,18 @@ $xl: 1200px;
   }
 }
 
+@mixin flexRow {
+  display: flex;
+  flex-direction: row;
+}
+
 @mixin flexCol {
   display: flex;
   flex-direction: column;
+}
+
+@mixin spaceChildrenMD {
+  & > :not(:last-child) {
+    margin-bottom: 1rem;
+  }
 }

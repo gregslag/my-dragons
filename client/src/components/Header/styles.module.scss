@@ -1,0 +1,20 @@
+@import '../../styles/layout/fonts';
+@import '../../styles/layout/colors';
+@import '../../styles/layout/mixins';
+
+.header {
+  background: $white;
+  @include flexRow;
+  height: 50px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.logo {
+  & svg {
+    height: 45px;
+    width: 45px;
+  }
+}
