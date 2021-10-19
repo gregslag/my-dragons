@@ -1,6 +1,14 @@
 @import '../../styles/layout/colors';
 @import '../../styles/layout/mixins';
 
+.container { 
+  & > :not(:last-child) {
+    @include fromMD {
+      margin-bottom: 3rem;
+    }
+  }
+}
+
 .description {
   overflow-wrap: break-word;
   inline-size: 100%;

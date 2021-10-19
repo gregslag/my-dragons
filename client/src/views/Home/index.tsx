@@ -1,4 +1,5 @@
 import React from 'react';
+import cn from 'classnames'
 import { useHistory } from "react-router-dom";
 import { ViewBox, Text, Button, SVG } from '../../components'
 import { routes } from '../../routes'
@@ -9,8 +10,8 @@ const Home: React.FC = () => {
   const history = useHistory();
 
   return (
-    <ViewBox>
-      <div className={shared.container}>
+    <ViewBox fullMobile>
+      <div className={cn(shared.container, s.container)}>
         <SVG.Logo />
         <Text tag="h2" theme="primary">MY DRAGONS</Text>
         <Text className={s.description} centered>

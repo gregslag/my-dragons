@@ -5,6 +5,11 @@
   top: 1rem;
   left: 1rem;
   cursor:pointer;
+
+  @include fromMD {
+    top: 2rem;
+    left: 2rem;
+  }
 }
 
 .title {
